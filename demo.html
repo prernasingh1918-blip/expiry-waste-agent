@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Kitchen That Never Forgets — Expiry & Waste AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #221D17;
+    --bg-panel: #2B241C;
+    --paper: #F3EADC;
+    --marigold: #E8A33D;
+    --chili: #C1432D;
+    --sage: #8C9B7A;
+    --ink-soft: #C9BFAF;
+    --line: rgba(243,234,220,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    color: var(--paper);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* HERO */
+  .hero{
+    padding: 100px 0 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-kicker{
+    color: var(--marigold);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .hero h1{
+    font-size: clamp(38px, 6vw, 60px);
+    line-height: 1.08;
+    max-width: 780px;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--marigold);
+  }
+  .hero p{
+    max-width: 560px;
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-top: 26px;
+  }
+  .hero-stat{
+    margin-top: 56px;
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+  .stat .num{
+    font-family: 'Fraunces', serif;
+    font-size: 46px;
+    font-weight: 600;
+    color: var(--paper);
+  }
+  .stat .num span{ color: var(--marigold); }
+  .stat .label{
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 180px;
+    margin-top: 4px;
+  }
+
+  /* HOW IT THINKS */
+  .thinks{
+    padding: 76px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .thinks h2{
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+  .thinks > p{
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 48px;
+    font-size: 16px;
+  }
+  .steps{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .step{
+    padding: 0 22px 0 0;
+    position: relative;
+  }
+  .step:not(:last-child)::after{
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 0;
+    width: 22px;
+    height: 1px;
+    background: var(--line);
+  }
+  .step-num{
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--marigold);
+    margin-bottom: 14px;
+  }
+  .step h3{
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .step p{
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* TICKETS */
+  .tickets{
+    padding: 76px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .tickets h2{
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+  .tickets > p{
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 48px;
+    font-size: 16px;
+  }
+  .ticket-row{
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin: 0 -28px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .ticket{
+    flex: 0 0 268px;
+    background: var(--paper);
+    color: #2B241C;
+    padding: 26px 22px 22px;
+    position: relative;
+    font-family: 'Work Sans', sans-serif;
+    box-shadow: 0 18px 34px rgba(0,0,0,0.28);
+  }
+  .ticket::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 10px;
+    background:
+      radial-gradient(circle at 8px 0, transparent 6px, var(--paper) 6.5px) top left / 16px 10px repeat-x;
+    transform: translateY(-9px);
+  }
+  .ticket .tag{
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+  .tag.risk{ background: var(--chili); color: var(--paper); }
+  .tag.watch{ background: var(--marigold); color: #2B241C; }
+  .tag.urgent{ background: #7A2418; color: var(--paper); }
+  .ticket h3{
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .ticket .sub{
+    font-size: 13px;
+    color: #6B6152;
+    margin-bottom: 16px;
+  }
+  .ticket .line{
+    border-top: 1px dashed #C9BFAF;
+    margin: 14px 0;
+  }
+  .ticket .decision{
+    font-size: 13px;
+    font-weight: 600;
+    color: #6B6152;
+    margin-bottom: 4px;
+  }
+  .ticket .decision strong{
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2B241C;
+    margin-top: 2px;
+  }
+  .ticket .why{
+    font-size: 13.5px;
+    color: #4A4336;
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  /* RESULT */
+  .result{
+    padding: 76px 0 100px;
+  }
+  .result h2{
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  .grid4{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .rcard .num{
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .rcard.risk .num{ color: var(--chili); }
+  .rcard.ok .num{ color: var(--sage); }
+  .rcard.watch .num{ color: var(--marigold); }
+  .rcard .label{
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  .callout{
+    margin-top: 56px;
+    padding: 30px 32px;
+    background: var(--bg-panel);
+    border-left: 3px solid var(--marigold);
+  }
+  .callout p{
+    font-size: 16.5px;
+    color: var(--paper);
+    max-width: 640px;
+  }
+  .callout p + p{
+    margin-top: 12px;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+  }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 34px 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  footer .brand{
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  footer a{
+    color: var(--marigold);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+  }
+  footer a:hover{ border-bottom-color: var(--marigold); }
+
+  @media (max-width: 780px){
+    .steps{ grid-template-columns: 1fr 1fr; row-gap: 30px; }
+    .step:nth-child(2)::after{ display:none; }
+    .grid4{ grid-template-columns: 1fr 1fr; row-gap: 28px; }
+    .hero{ padding: 70px 0 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="hero-kicker">A kitchen AI project</div>
+    <h1>A kitchen that <em>never forgets</em> what's about to go bad.</h1>
+    <p>This is an AI built to walk through a restaurant's stock the way an experienced kitchen manager would — checking what's ageing, what's being used, and what the safety rules say, before deciding what to do about it.</p>
+    <div class="hero-stat">
+      <div class="stat">
+        <div class="num"><span>23</span> of 44</div>
+        <div class="label">raw ingredients needed some kind of attention today</div>
+      </div>
+      <div class="stat">
+        <div class="num">₹19,925</div>
+        <div class="label">worth of stock at risk of being wasted</div>
+      </div>
+      <div class="stat">
+        <div class="num">1</div>
+        <div class="label">genuine food-safety issue caught that a simple date check would have missed</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thinks">
+    <h2>How it actually decides</h2>
+    <p>It isn't following one fixed checklist. For every item, it works through the same questions a good kitchen manager would — in whatever order makes sense for that item.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>How much time is left?</h3>
+        <p>Checks the use-by date against today.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Is it being used fast enough?</h3>
+        <p>Compares how much has sold or been used against how much time has passed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>What does the kitchen's rulebook say?</h3>
+        <p>Looks up the actual safety rule for that ingredient — seafood, dairy, and spices all behave differently.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>What should happen next?</h3>
+        <p>Decides: leave it, cook it into today's menu, discount it, write it off, or ask a person.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tickets">
+    <h2>Three real decisions it made</h2>
+    <p>Pulled straight from a test run — not made up for the demo. Here's the reasoning behind three of them, in plain terms.</p>
+    <div class="ticket-row">
+
+      <div class="ticket">
+        <span class="tag risk">Seafood · 1 day left</span>
+        <h3>Prawns</h3>
+        <div class="sub">Batch RB-0027</div>
+        <div class="line"></div>
+        <div class="decision">Decision
+          <strong>Use today, don't hold</strong>
+        </div>
+        <div class="why">Seafood spoils fast even when it looks fine on paper — so the rule is to act early, regardless of how much stock is left. Push it into today's specials.</div>
+      </div>
+
+      <div class="ticket">
+        <span class="tag urgent">Safety catch</span>
+        <h3>Chicken Marinade</h3>
+        <div class="sub">Made from Batch RB-0023</div>
+        <div class="line"></div>
+        <div class="decision">Decision
+          <strong>Stop — needs review</strong>
+        </div>
+        <div class="why">The marinade itself still looked fine timing-wise. But it was made from chicken that had already expired before it was prepped — a real problem a simple timer would have completely missed.</div>
+      </div>
+
+      <div class="ticket">
+        <span class="tag watch">Dairy · early warning</span>
+        <h3>Fresh Cream</h3>
+        <div class="sub">Batch RB-0016</div>
+        <div class="line"></div>
+        <div class="decision">Decision
+          <strong>Keep an eye on it</strong>
+        </div>
+        <div class="why">Plenty of shelf life left, but usage is unusually slow — a sign the kitchen may have over-ordered. Not urgent yet, but worth watching before it becomes a problem.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="result">
+    <h2>Across one day's stock</h2>
+    <div class="grid4">
+      <div class="rcard ok">
+        <div class="num">21</div>
+        <div class="label">ingredients completely fine, no action needed</div>
+      </div>
+      <div class="rcard risk">
+        <div class="num">13</div>
+        <div class="label">flagged as genuinely at risk of going to waste</div>
+      </div>
+      <div class="rcard watch">
+        <div class="num">4</div>
+        <div class="label">early warnings — slow-moving stock worth watching</div>
+      </div>
+      <div class="rcard risk">
+        <div class="num">1</div>
+        <div class="label">safety issue caught in an already-prepped dish</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>Most restaurants only find out about waste after it's happened — a bin full of spoiled stock, a dish pulled off the menu too late. This is what it looks like to catch it while there's still time to do something about it.</p>
+      <p>Built with a real kitchen rulebook the AI reads and reasons over, not a fixed set of hardcoded rules — so it can explain, in each case, exactly why it made the call it did.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand">Expiry & Waste Reduction Agent — Prenspective</div>
+    <a href="#">View the full build on GitHub →</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
