@@ -1,0 +1,23 @@
+Prep_ID,Item_Name,Category,Made_From_Batch_IDs,Prep_DateTime,Use_By_DateTime,Quantity_Prepped,Quantity_Used_So_Far,Ingredient_Cost_Estimate,Labor_Cost_Estimate,Is_Dairy_Based,Scenario_Tag
+PP-0001,Tomato-Onion Masala Base,Curry Base,RB-0001;RB-0003;RB-0004;RB-0006,2026-09-10 02:00,2026-09-12 02:00,14.4,6.9,90.62,191.06,False,normal
+PP-0002,Butter Chicken Gravy Base,Curry Base,RB-0001;RB-0021;RB-0019;RB-0036,2026-09-10 02:00,2026-09-11 02:00,10.0,3.0,191.64,303.0,True,dairy_prep_near_limit
+PP-0003,Paneer Makhani Base,Curry Base,RB-0016;RB-0019;RB-0001,2026-09-10 09:00,2026-09-11 09:00,8.6,3.5,201.23,284.14,True,normal
+PP-0004,Tandoori Chicken Marinade,Marinated Protein,RB-0023,2026-09-09 10:00,2026-09-11 10:00,5.4,2.2,218.04,256.86,False,prepped_from_at_risk_source
+PP-0005,Chicken Tikka Marinade,Marinated Protein,RB-0024;RB-0018;RB-0036,2026-09-09 10:00,2026-09-11 10:00,10.4,3.4,128.64,253.4,False,normal
+PP-0006,Fish Marinade,Marinated Protein,RB-0028;RB-0033;RB-0015,2026-09-10 18:00,2026-09-11 18:00,7.2,2.6,105.91,198.51,False,normal
+PP-0007,Mint Chutney,Chutney/Sauce,RB-0009;RB-0008;RB-0007,2026-09-09 03:00,2026-09-11 03:00,6.0,3.4,220.56,71.17,False,normal
+PP-0008,Tamarind Chutney,Chutney/Sauce,RB-0039;RB-0034,2026-09-10 14:00,2026-09-13 14:00,10.2,5.9,189.21,65.95,False,normal
+PP-0009,Garlic Chutney,Chutney/Sauce,RB-0004;RB-0034,2026-09-09 06:00,2026-09-12 06:00,9.1,6.5,159.55,62.45,False,normal
+PP-0010,Naan Dough,Bakery,RB-0031;RB-0018,2026-09-10 01:00,2026-09-11 01:00,12.0,5.0,206.37,50.5,False,bakery_nearing_staleness
+PP-0011,Roti Dough,Bakery,RB-0031,2026-09-10 12:00,2026-09-11 12:00,12.0,5.2,295.64,32.36,False,normal
+PP-0012,Dosa/Idli Batter,Bakery,RB-0043;RB-0041,2026-09-10 09:00,2026-09-11 09:00,5.8,2.6,285.32,82.65,False,normal
+PP-0013,Raita Base,Sauce,RB-0018,2026-09-10 01:00,2026-09-11 01:00,4.9,2.7,253.6,66.37,True,normal
+PP-0014,Dal Tempering (Tadka),Curry Base,RB-0039;RB-0017;RB-0038,2026-09-10 01:00,2026-09-12 01:00,11.6,6.6,207.58,73.69,False,normal
+PP-0015,Biryani Rice (Par-cooked),Rice Prep,RB-0030,2026-09-10 17:00,2026-09-12 17:00,14.4,7.4,226.11,102.43,False,normal
+PP-0016,Paneer Tikka Prep,Marinated Protein,RB-0016;RB-0018;RB-0036,2026-09-09 02:00,2026-09-11 02:00,7.4,4.1,229.87,272.28,False,normal
+PP-0017,Ghee-Roasted Cashews (Garnish),Garnish,RB-0042;RB-0017,2026-09-06 20:00,2026-09-13 20:00,13.8,6.3,286.94,194.22,False,normal
+PP-0018,Saag Base (Spinach),Curry Base,RB-0012;RB-0004;RB-0006,2026-09-09 07:00,2026-09-11 07:00,5.3,1.7,249.01,125.17,False,normal
+PP-0019,Chana Masala Base,Curry Base,RB-0041;RB-0001;RB-0003,2026-09-10 07:00,2026-09-12 07:00,8.4,6.0,189.23,106.65,False,normal
+PP-0020,Cauliflower Prep (Gobi),Vegetable Prep,RB-0011;RB-0032,2026-09-09 21:00,2026-09-11 21:00,10.0,7.0,260.24,115.92,False,normal
+PP-0021,Green Chilli-Garlic Paste,Chutney/Sauce,RB-0007;RB-0004,2026-09-09 11:00,2026-09-13 11:00,11.8,8.8,230.2,81.41,False,normal
+PP-0022,Fresh Cream Reduction,Sauce,RB-0019;RB-0021,2026-09-10 15:00,2026-09-11 15:00,5.7,2.2,131.03,159.33,True,normal
