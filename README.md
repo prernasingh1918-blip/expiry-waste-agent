@@ -83,7 +83,7 @@ final answer alone.
 
 Alongside the LLM agent, a deterministic Python classifier encodes the same
 policy rules directly. This isn't a shortcut — it's the same verification
-pattern used in this developer's prior project (Vantage): the deterministic
+pattern used in my prior project (Vantage): the deterministic
 layer provides ground truth to test the agent against, and powers the bulk
 statistics below without spending API quota on every one of 66 items.
 
